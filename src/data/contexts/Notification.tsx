@@ -22,14 +22,17 @@ export const NotificationProvider: React.FC = ({ children }) => {
   
       if (enabled) {
         if (!messaging().isDeviceRegisteredForRemoteMessages) {
-          messaging().registerDeviceForRemoteMessages();
+         await messaging().registerDeviceForRemoteMessages();
         }
-        let token = await getFcmToken();
+
+        var token = await getFcmToken();
+
         if (token == null){
-          console.warn("O token retornou nulo")
+          console.log("O token retornou nulo")
           return;
+        } else {
+          console.log("Meu token:" + token)
         }
-        console.log("Meu token:" + token)
       
       }
   }

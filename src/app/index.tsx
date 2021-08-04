@@ -7,10 +7,16 @@ import { NotificationProvider } from '../data/contexts/Notification';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { Global_Primary } from '../utils/global';
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+
 
 
 function App() {
-  
+ 
+
+
   return (
     <>
       <StatusBar backgroundColor={Global_Primary} />
