@@ -13,6 +13,7 @@ export const NotificationProvider: React.FC = ({ children }) => {
     requestUserPermission();
 
   }, [])
+  
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
     const enabled =

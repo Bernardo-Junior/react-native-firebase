@@ -51,13 +51,15 @@ const Routes: React.FC = () => {
             if (focused === true) {
               return (
                 <Sino_Ativo
-                  style={styles.svg}
+                  width={styles.svg.width}
+                  height={styles.svg.height}
                 />
               )
             } else {
               return (
                 <Sino_Inativo
-                  style={styles.svg}
+                  width={styles.svg.width}
+                  height={styles.svg.height}
                 />
               )
             }
@@ -65,13 +67,15 @@ const Routes: React.FC = () => {
             if (focused === true) {
               return (
                 <Sobre_Ativo
-                  style={styles.svg}
+                  width={styles.svg.width}
+                  height={styles.svg.height}
                 />
               )
             } else {
               return (
                 <Sobre_Inativo
-                  style={styles.svg}
+                  width={styles.svg.width}
+                  height={styles.svg.height}
                 />
               )
             }

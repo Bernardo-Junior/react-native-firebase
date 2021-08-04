@@ -27,13 +27,13 @@ export const styles = StyleSheet.create({
     height: resp(Platform.OS == 'ios' ? 24 : 30)
   },
   activeTabText: {
-    fontWeight: 'bold',
-    color: '#000000',
+    fontWeight: '700',
+    color: Global_Primary,
     fontSize: resp(10),
     marginBottom: resp(Platform.OS == 'ios' ? 10 : 12)
   },
   inactiveTabText: {
-    color: '#000000',
+    color: Global_Primary,
     fontSize: resp(10),
     marginBottom: resp(Platform.OS == 'ios' ? 10 : 12)
   }
