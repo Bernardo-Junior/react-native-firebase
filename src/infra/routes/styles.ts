@@ -8,7 +8,7 @@ import { hp } from '../../utils/responsividadeWH';
 export const styles = StyleSheet.create({
   tabBar: {
     height: hp('10%'),
-    backgroundColor: `${Global_Primary}`,
+    backgroundColor: "#FFFFFF",
     justifyContent: 'center',
     alignItems: 'center',
     
@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
     fontSize: resp(10),
     alignSelf: 'center',
     color: '#FFFFFF',
-    fontFamily: 'Silka',
   },
   tabStyle: { 
     justifyContent: 'center',
@@ -28,14 +27,13 @@ export const styles = StyleSheet.create({
     height: resp(Platform.OS == 'ios' ? 24 : 30)
   },
   activeTabText: {
-    fontFamily: 'Silka_Bold',
-    color: '#FFFFFF',
+    fontWeight: 'bold',
+    color: '#000000',
     fontSize: resp(10),
     marginBottom: resp(Platform.OS == 'ios' ? 10 : 12)
   },
   inactiveTabText: {
-    fontFamily: 'Silka',
-    color: '#FFFFFF',
+    color: '#000000',
     fontSize: resp(10),
     marginBottom: resp(Platform.OS == 'ios' ? 10 : 12)
   }

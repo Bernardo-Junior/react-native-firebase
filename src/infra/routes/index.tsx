@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
@@ -11,9 +12,16 @@ import { styles } from './styles';
 
 import Home from '../../presentation/pages/Home';
 
+import Sobre from '../../presentation/pages/Sobre';
+
 import Sino_Ativo from '../../assets/icons/sino_ativo.svg';
 
 import Sino_Inativo from '../../assets/icons/sino_inativo.svg';
+
+import Sobre_Ativo from '../../assets/icons/sobre_ativo.svg';
+
+import Sobre_Inativo from '../../assets/icons/sobre_inativo.svg';
+
 import { Text } from 'react-native';
 
 
@@ -34,11 +42,12 @@ import { Text } from 'react-native';
 
 const Routes: React.FC = () => {
   return (
+    
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
           let iconName;
-          if (route.name === 'Blog') {
+          if (route.name === 'Home') {
             if (focused === true) {
               return (
                 <Sino_Ativo
@@ -52,26 +61,35 @@ const Routes: React.FC = () => {
                 />
               )
             }
+          } else {
+            if (focused === true) {
+              return (
+                <Sobre_Ativo
+                  style={styles.svg}
+                />
+              )
+            } else {
+              return (
+                <Sobre_Inativo
+                  style={styles.svg}
+                />
+              )
+            }
           }
         },
         tabBarLabel: ({ focused }) => {
           let label;
           switch (route.name) {
-            case 'Perfil':
+            case 'Home':
               return label = focused ?
-                <Text style={styles.activeTabText}>PERFIL</Text>
+                <Text style={styles.activeTabText}>HOME</Text>
                 :
-                <Text style={styles.inactiveTabText}>PERFIL</Text>
-            case 'MeuCiclo':
+                <Text style={styles.inactiveTabText}>HOME</Text>
+            case 'Sobre':
               return label = focused ?
-                <Text style={styles.activeTabText}>MEU CICLO</Text>
-                :
-                <Text style={styles.inactiveTabText}>MEU CICLO</Text>
-            case 'Blog':
-              return label = focused ?
-                <Text style={styles.activeTabText}>BLOG</Text>
-                :
-                <Text style={styles.inactiveTabText}>BLOG</Text>
+              <Text style={styles.activeTabText}>SOBRE</Text>
+              :
+              <Text style={styles.inactiveTabText}>SOBRE</Text>
           }
           return label
         }
@@ -84,9 +102,11 @@ const Routes: React.FC = () => {
         labelPosition: "below-icon",
         inactiveTintColor: '#73265C',
       }}
-      initialRouteName="MeuCiclo"
+      
+      initialRouteName="Home"
     >
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Sobre" component={Sobre} />
 
     </Tab.Navigator>
   )

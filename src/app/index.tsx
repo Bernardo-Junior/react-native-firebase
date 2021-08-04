@@ -1,13 +1,20 @@
 import * as React from 'react';
 import { Text } from 'react-native';
-import messaging from '@react-native-firebase/messaging';
+
+import Routes from '../infra/routes';
+
+import { NotificationProvider } from '../data/contexts/Notification';
+import { NavigationContainer } from '@react-navigation/native';
+
 
 function App() {
- 
+  
   return (
-    <>
-    <Text>Teste</Text>
-    </>
+    <NavigationContainer>
+      <NotificationProvider>
+        <Routes />
+      </NotificationProvider>
+    </NavigationContainer>
   )
 }
 
