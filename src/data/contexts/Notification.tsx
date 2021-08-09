@@ -14,7 +14,7 @@ export const NotificationProvider: React.FC = ({ children }) => {
 
   }, [])
   
-  async function requestUserPermission() {
+    const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission();
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
