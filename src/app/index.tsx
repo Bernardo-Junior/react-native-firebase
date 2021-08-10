@@ -1,27 +1,19 @@
 import * as React from 'react';
-import { Text } from 'react-native';
-
 import Routes from '../infra/routes';
-
-import { NotificationProvider } from '../data/contexts/Notification';
+import NotificationContext, { NotificationProvider } from '../data/contexts/Notification';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { Global_Primary } from '../utils/global';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import ToastNotification from '../presentation/components/ToastNotification';
+import { useContext } from 'react';
 
-
-
-
-function App() {
- 
-
-
+const App = () => {
   return (
     <>
       <StatusBar backgroundColor={Global_Primary} />
       <NavigationContainer>
         <NotificationProvider>
+          <ToastNotification/>
           <Routes />
         </NotificationProvider>
       </NavigationContainer>

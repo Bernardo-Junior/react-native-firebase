@@ -1,3 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface INotificationContext {
-  message: String;
+  notification: INotification | null;
+  setNotification: Dispatch<SetStateAction<INotification | null>>;
+}
+
+export interface INotification {
+  body?: string | undefined;
+  title?: string | undefined;
 }

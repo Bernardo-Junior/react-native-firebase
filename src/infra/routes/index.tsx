@@ -24,6 +24,11 @@ import Sobre_Inativo from '../../assets/icons/sobre_inativo.svg';
 
 import { Text } from 'react-native';
 
+import messaging from '@react-native-firebase/messaging';
+import { useContext } from 'react';
+import NotificationContext from '../../data/contexts/Notification';
+
+
 
 // const HomeStack: React.FC = () => {
 //   return (
@@ -41,6 +46,13 @@ import { Text } from 'react-native';
 // }
 
 const Routes: React.FC = () => {
+  const { notification, setNotification } = useContext(NotificationContext);
+
+  messaging().onMessage(async remoteMessage => {
+    if(remoteMessage?.notification != undefined)
+      setNotification(remoteMessage?.notification);
+  });
+
   return (
     
     <Tab.Navigator

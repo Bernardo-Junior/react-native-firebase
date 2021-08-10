@@ -1,17 +1,15 @@
 import React,  { createContext } from "react";
 import { useState } from "react";
-import { INotificationContext } from "../protocols/Notification";
+import { INotification, INotificationContext } from "../protocols/Notification";
 import messaging from '@react-native-firebase/messaging';
 
 const NotificationContext = createContext<INotificationContext>({} as INotificationContext);
 
 export const NotificationProvider: React.FC = ({ children }) => {
-  const [message, setMessage] = useState<String>("");
+  const [notification, setNotification] = useState<INotification | null>({} as INotification);
 
   React.useEffect(() => {
-   
     requestUserPermission();
-
   }, [])
   
     const requestUserPermission = async () => {
@@ -43,7 +41,7 @@ export const NotificationProvider: React.FC = ({ children }) => {
   }
 
   return (
-    <NotificationContext.Provider value={{ message }}>
+    <NotificationContext.Provider value={{ notification, setNotification }}>
       { children }
     </NotificationContext.Provider>
   )
