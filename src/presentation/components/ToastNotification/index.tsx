@@ -17,7 +17,7 @@ import NotificationContext from '../../../data/contexts/Notification';
 import { Global_styles } from '../../../utils/global';
 
 const ToastNotification: React.FC = () => {
-  const [offset] = useState<Animated.Value>(new Animated.Value(resp(0)));
+  const [offset] = useState<Animated.Value>(new Animated.Value(-resp(1000)));
   const [sizeOff, setSizeOff] = useState<number>(0);
 
   const { notification, setNotification } = useContext(NotificationContext);
@@ -63,7 +63,7 @@ const ToastNotification: React.FC = () => {
             {notification?.title}
           </Title_Notificacao>
           <Body_Notification>
-            {notification?.body}
+            {notification?.body != undefined && notification?.body.length < 70 ? notification?.body : `${notification?.body?.substring(0, 70)}...`}
           </Body_Notification>
         </Button_Notificacao>
       </Container_Notificacao>

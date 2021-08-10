@@ -17,14 +17,15 @@ export const Button_Notificacao = styled.TouchableOpacity`
 `;
 
 export const Title_Notificacao = styled.Text`
-  margin-top: ${resp(30)}px;
+  margin-top: ${resp(15)}px;
   font-weight: bold;
   font-size: ${resp(20)}px;
   color: #FFFFFF;
 `;
 
 export const Body_Notification = styled.Text`
-  margin-top: ${resp(30)}px;
+  margin-top: ${resp(25)}px;
   font-size: ${resp(16)}px;
   color: #FFFFFF;
+  margin-bottom: ${resp(15)}px;
 `;

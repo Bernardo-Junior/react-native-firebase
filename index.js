@@ -31,7 +31,7 @@ messaging()
 
 // Esse listener será ouvido caso a notificação chegue com o app aberto. (Foreground)
 messaging().onMessage(async remoteMessage => {
-  console.log(remoteMessage.notification.body);
+  // console.log(remoteMessage.notification.body);
 });
 
 

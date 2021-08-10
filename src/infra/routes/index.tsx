@@ -28,23 +28,6 @@ import messaging from '@react-native-firebase/messaging';
 import { useContext } from 'react';
 import NotificationContext from '../../data/contexts/Notification';
 
-
-
-// const HomeStack: React.FC = () => {
-//   return (
-//     <Stack.Navigator
-//       screenOptions={() => ({
-//         headerShown: false,
-//         gestureDirection: 'horizontal',
-//         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-//       })}
-//       initialRouteName="Home"
-//     >
-//       <Stack.Screen name="Home" component={Home}/>
-//     </Stack.Navigator>
-//   )
-// }
-
 const Routes: React.FC = () => {
   const { notification, setNotification } = useContext(NotificationContext);
 
