@@ -17,10 +17,6 @@ import {
 const Home: React.FC = () => {
   const { notifications, setNotifications } = useContext(NotificationContext);
 
-  useEffect(() => {
-    console.log(notifications)
-  }, [notifications])
-
   const renderItems: ListRenderItem<INotificationStorage> = useCallback(({ item }) => {
     return (
       <Container_Notificacao style={Global_styles.shadow}>

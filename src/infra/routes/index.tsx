@@ -27,14 +27,46 @@ import { Text } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import { useContext } from 'react';
 import NotificationContext from '../../data/contexts/Notification';
+import moment from 'moment';
 
 const Routes: React.FC = () => {
-  const { notification, setNotification } = useContext(NotificationContext);
+  const { notification, setNotification, notifications, setNotifications } = useContext(NotificationContext);
+  const atual = new Date();
+
+  var control = false;
 
   messaging().onMessage(async remoteMessage => {
     if(remoteMessage?.notification != undefined)
       setNotification(remoteMessage?.notification);
   });
+
+  // Esse é o listener que será ouvido quando o aplicativo estiver em segundo plano. (Background)
+  messaging().onNotificationOpenedApp(async remoteMessage => {
+    if(remoteMessage?.notification != undefined) {
+      setTimeout(() => {
+        setNotifications([...notifications, {
+          id: (Math.random() * (9999 - 1) + 1),
+          body: remoteMessage?.notification?.body,
+          title: remoteMessage?.notification?.title,
+          date: moment(atual).format("DD/MM/YYYY")
+        }])
+      }, 5000)
+    }
+  });
+
+  // Esse é o listener que será ouvido quando o aplicativo estiver fechado totalmente. (Quit)
+  messaging().setBackgroundMessageHandler(async remoteMessage => {
+    if(remoteMessage?.notification != undefined) {
+      setTimeout(() => {
+        setNotifications([...notifications, {
+          id: (Math.random() * (9999 - 1) + 1),
+          body: remoteMessage?.notification?.body,
+          title: remoteMessage?.notification?.title,
+          date: moment(atual).format("DD/MM/YYYY")
+        }])
+      }, 5000)
+    }
+  })
 
   return (
     
