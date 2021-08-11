@@ -15,12 +15,16 @@ import { Easing, not } from 'react-native-reanimated';
 import { useContext } from 'react';
 import NotificationContext from '../../../data/contexts/Notification';
 import { Global_styles } from '../../../utils/global';
+import moment from 'moment';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ToastNotification: React.FC = () => {
   const [offset] = useState<Animated.Value>(new Animated.Value(-resp(1000)));
   const [sizeOff, setSizeOff] = useState<number>(0);
 
-  const { notification, setNotification } = useContext(NotificationContext);
+  const atual = new Date();
+
+  const { notification, setNotification, notifications, setNotifications } = useContext(NotificationContext);
 
   useEffect(() => {
     if (sizeOff > 0 && notification) {
@@ -28,7 +32,15 @@ const ToastNotification: React.FC = () => {
     }
   }, [notification])
 
-  const limparNotificacao = () => {
+  const limparNotificacao = async () => {
+
+    setNotifications([...notifications, {
+      id: (Math.random() * (9999 - 1) + 1),
+      body: notification?.body,
+      title: notification?.title,
+      date: moment(atual).format("DD/MM/YYYY")
+    }])
+
     setNotification(null);
   }
 
@@ -63,7 +75,7 @@ const ToastNotification: React.FC = () => {
             {notification?.title}
           </Title_Notificacao>
           <Body_Notification>
-            {notification?.body != undefined && notification?.body.length < 70 ? notification?.body : `${notification?.body?.substring(0, 70)}...`}
+            {notification?.body != undefined && notification?.body.length < 100 ? notification?.body : `${notification?.body?.substring(0, 100)}...`}
           </Body_Notification>
         </Button_Notificacao>
       </Container_Notificacao>
